@@ -46,7 +46,7 @@ def main():
     for it in A.build_items(True, 1):
         dy = {"release_ring": -30, "spacer_ring": -60, "spacer_main_mid": -70, "brg_main_1_inner": -75, "brg_main_1_outer": -90, "upper_arm": -90,
               "brg_main_2_inner": -105, "brg_main_2_outer": -105, "spacer_main_front": -125, "main_washer": -140, "main_bolt_M8x60": -160,
-              "elbow_bolt_M8x50": -95, "spacer_elbow_rear": -130, "brg_elb_1_outer": -165, "brg_elb_1_inner": -160, "spacer_elbow_mid": -175,
+              "elbow_bolt_M8x60": -95, "spacer_elbow_rear": -130, "brg_elb_1_outer": -165, "brg_elb_1_inner": -160, "spacer_elbow_mid": -175,
               "brg_elb_2_outer": -185, "brg_elb_2_inner": -190, "lower_arm": -200, "spacer_elbow_front": -235, "elbow_washer": -250,
               "elbow_nyloc": -265, "tip_bolt_M8x40": -215, "tip_cap": -240, "tip_led_cr2032": -255, "tip_nut_1": -280, "main_nut": 0}.get(it.name, 0)
         dz = 70 if it.name == "upright_top" else (60 if it.name in ("main_nut",) else 0)

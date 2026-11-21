@@ -70,7 +70,7 @@ NUT_SLOT_A0 = 26.0                    # main nut slot (a) in the nose
 LH0 = UH1 + S_ELB_REAR                # 72 lower hub rear
 LH1 = LH0 + HUB_W                     # 96 lower hub front
 LB0 = LH1 - BAR_T                     # 86 lower bar rear
-ELB_BOLT_LEN = 50.0
+ELB_BOLT_LEN = 60.0                    # ISO 4014 M8x60: thread b=22 -> thread starts at a=99.8, past the lower hub (96)
 ELB_HEAD_UNDER = EB0 + HEX_POCKET_D   # 61.8
 TIP_BOLT_LEN = 40.0
 TIP_HEAD_UNDER = LB0 + HEX_POCKET_D   # 91.8
@@ -87,7 +87,7 @@ PIN_STOP_END = 63.0                   # stop reaches into upper bar plane (a 58.
 
 # ---- stand ----------------------------------------------------------------------------
 BASE_T = 40.0
-BASE_X = 214.0
+BASE_X = 218.0
 BASE_Y0, BASE_Y1 = -115.0, 95.0
 BASE_WALL = 8.0
 BASE_FLOOR = 6.0

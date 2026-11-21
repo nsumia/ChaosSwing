@@ -88,7 +88,7 @@ def build_items(led_cap=False, tip_nuts=P.TIP_NUTS):
     for it_ in bearing_parts("brg_main_1", "stand", "upper", P.UH0, 0, 0) + bearing_parts("brg_main_2", "stand", "upper", P.UH1 - P.BRG_W, 0, 0):
         A(it_)
     ey = -P.L1
-    A(Item("elbow_bolt_M8x50", "upper", "steel", "L", bolt_fwd(0, ey, P.ELB_HEAD_UNDER, P.ELB_BOLT_LEN)))
+    A(Item("elbow_bolt_M8x60", "upper", "steel", "L", bolt_fwd(0, ey, P.ELB_HEAD_UNDER, P.ELB_BOLT_LEN)))
     A(Item("spacer_elbow_rear", "upper", "printed", "L", pt.spacer_at(P.S_ELB_REAR, P.UH1, 0, ey), fill=P.FILL_SMALL, material="PLA"))
     A(Item("spacer_elbow_mid", "upper", "printed", "L", pt.spacer_at(P.BRG_GAP, P.LH0 + P.BRG_W, 0, ey), fill=P.FILL_SMALL, material="PLA"))
     A(Item("spacer_elbow_front", "upper", "printed", "L", pt.spacer_at(P.S_ELB_FRONT, P.LH1, 0, ey), fill=P.FILL_SMALL, material="PLA"))

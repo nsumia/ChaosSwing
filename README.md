@@ -26,8 +26,10 @@ Status: **v1, designed and checked on the computer only. Nothing has been printe
 Two simulated releases, upper arm 150.0 and 150.1 degrees, lower arm in line, both from rest (rigid bodies with the inertias from the CAD, viscous joint damping of 5e-5 N m s/rad per joint as an **assumption**).
 The tips are 10 mm apart after about 1.4 s and 100 mm apart after 1.8 s. More: `img/tip_trace.png`, `data/sim_summary.json`.
 
+The simulation uses **viscous** damping. Real 608 bearing friction is partly Coulomb (constant torque), which most likely shortens the motion compared with the numbers here.
+
 How long the motion stays wild depends almost entirely on the (unknown) friction. In the simulation the last flip of the lower arm happens after 12.8 s with 5e-5, after 64 s with 2e-5, after 11.9 s with 1e-4 and after 5.3 s with 2e-4 N m s/rad.
-These are single trajectories of a chaotic system, so they are indicative only. **The 20-30 s goal is not confirmed; real run time is not measured (unverified).** Print the bearing test coupon and the arms first and time a run.
+These are single trajectories of a chaotic system, so they are indicative only. **The 20-30 s goal is not confirmed; real run time is not measured (unverified).** Plainly: reaching 20-30 s of wild motion needs a joint damping of about 2-3e-5 N m s/rad or lower, which means low-friction bearings (degreased and lightly oiled, or ceramic). Standard greased 608 bearings are likely to give less. More tip mass also helps (lower/upper mass ratio up to about 0.95). Print the bearing test coupon and the arms first and time a run.
 
 ## Parts
 
@@ -35,7 +37,7 @@ Printable parts (STEP in `step/`, STL in `stl/`, both already in print orientati
 
 | Part | Qty | Bed footprint / height (mm) | Material | Supports |
 |---|---|---|---|---|
-| `base` | 1 | 214 x 210 x 40 | PLA or PETG | none |
+| `base` | 1 | 218 x 210 x 40 | PLA or PETG | none |
 | `upright_lower` | 1 | 100 x 80 x 200 | PLA or PETG | none |
 | `upright_top` (with the cantilever axle mount) | 1 | 44 x 73.5 x 193 | PLA or PETG | none (printed upside down) |
 | `release_ring` | 1 | 200 x 200 x 4 | PLA | none |
@@ -54,7 +56,7 @@ Axial layout (distance `a` in front of the upright face): nose 0-36, release rin
 |---|---|---|
 | 608ZZ bearings (8 x 22 x 7) | 4 (+2 spare) | 6-12 EUR per 10 pack |
 | M8 x 60 bolt, partly threaded (main axle) | 1 | 0.5 EUR |
-| M8 x 50 bolt (elbow) | 1 | 0.5 EUR |
+| M8 x 60 bolt, partly threaded (elbow) | 1 | 0.5 EUR |
 | M8 x 40 bolt (tip mass) | 1 | 0.5 EUR |
 | M8 hex nuts (1 axle, 2 tip, more for tuning) | 4-8 | 1 EUR |
 | M8 nyloc nut | 1 | 0.3 EUR |
@@ -62,7 +64,8 @@ Axial layout (distance `a` in front of the upright face): nose 0-36, release rin
 | M5 x 45 bolts + M5 nuts (upright to base) | 4 + 4 | 1 EUR |
 | M5 x 40 bolts + M5 nuts (upright splice) | 2 + 2 | 0.5 EUR |
 | Desk screws or clamps for the 4 base holes (M5 clearance 5.5 mm, head recess 10.4 mm) | 4 | 1 EUR |
-| Ballast: steel washers/nuts about 3 kg (recommended) or at least 1 kg of sand (minimum) | 1 | 6-10 EUR |
+| Ballast: steel washers/nuts about 3 kg (required for releases above 90 degrees) or 1 kg of sand (only for swings up to 90 degrees) | 1 | 6-10 EUR |
+| Desk screws or a clamp (required for releases above 90 degrees) | 1 set | 1-5 EUR |
 | PLA filament, about 1.1 kg (assumed infill, see below) | 1 | about 22 EUR at 20 EUR/kg |
 | Optional: 5 mm LED, CR2032 + cell, small switch | 1 | 2 EUR |
 | **Total** | | **roughly 40-55 EUR (estimate)** |
@@ -85,11 +88,11 @@ Axial layout (distance `a` in front of the upright face): nose 0-36, release rin
 4. Splice: plug the spigot of `upright_lower` into the socket of `upright_top`. Push 2 M5 x 40 bolts through from the front, with the nuts in the hex traps at the back. Check that the nose points to the front.
 5. Axle nut: slide one M8 nut into the slot in the nose from the top (the slot is open at the top).
 6. Release ring: put it on the four pegs on the nose front face.
-7. Upper arm: press a bearing into each seat of the hub. Between them put the 10 mm spacer (insert it after the first bearing). The head of the M8 x 50 elbow bolt goes into the hex pocket on the **rear** of the elbow boss with the shank pointing to the front.
-8. Main axle stack, from the nose to the front: ring, 4 mm spacer, upper hub with its two bearings (10 mm spacer inside), 4 mm spacer, M8 washer, M8 x 60 bolt head. Thread the bolt in from the front into the nut in the slot. Tighten **only until the inner races are clamped** and the arm still spins freely. A loose stack wobbles, an over-tight one drags. (The bolt shank, not the thread, must be under the bearings: the 60 mm bolt does this.)
+7. Upper arm: press a bearing into each seat of the hub. Between them put the 10 mm spacer (insert it after the first bearing). The head of the M8 x 60 elbow bolt goes into the hex pocket on the **rear** of the elbow boss with the shank pointing to the front. Warning: as for the main axle, the smooth shank (not the thread) must be under both elbow bearings; the 60 mm bolt (thread length 22 mm) starts its thread about 4 mm in front of the lower hub. A shorter bolt (M8 x 50) puts the thread under the front bearing.
+8. Main axle stack, from the nose to the front: ring, 4 mm spacer, upper hub with its two bearings (10 mm spacer inside), 4 mm spacer, M8 washer, M8 x 60 bolt head. Thread the bolt in from the front into the nut in the slot. Tighten **only until the inner races are clamped** and the arm still spins freely. A loose stack wobbles, an over-tight one drags. (Warning: the bolt shank, not the thread, must be under the bearings; the 60 mm bolt with 22 mm thread does this. Check that the bolt you bought is partly threaded, not fully threaded.)
 9. Lower arm: press in two bearings as in step 7. Elbow stack from the upper arm to the front: 4 mm spacer, lower hub (10 mm spacer inside), 4 mm spacer, washer, nyloc nut.
 10. Tip mass: the head of the M8 x 40 bolt goes into the hex pocket on the rear of the tip boss, shank to the front. Add 2 nuts (about 32 g total with the bolt). More nuts = more mass, but keep the lower arm between 0.7 and 1.0 times the upper arm (`tools/mass_report.py` prints the ratio). With the LED cap fitted: bar, cap, then 1 nut.
-11. Ballast: fill the pocket with steel washers or nuts (about 3 kg; the pocket holds about 3.8 kg, *unverified bulk density 4 g/cm3*) or at least 1 kg of sand. Close it with tape or a printed lid so nothing spills (no lid is designed yet). Screw or clamp the base to the desk for big releases, see below.
+11. Ballast: fill the pocket with steel washers or nuts (about 3 kg; the pocket holds about 3.8 kg, *unverified bulk density 4 g/cm3*) (3 kg is required for releases above 90 degrees; 1 kg of sand is only enough for swings up to 90 degrees). Close it with tape so nothing spills (a lid is not designed). For releases above 90 degrees also screw or clamp the base to the desk, see below.
 12. Spin both arms by hand. They should swing freely for many seconds. If an arm stops quickly, the stack is too tight or a bearing seat is too small.
 
 ## Release procedure
@@ -104,16 +107,18 @@ Showing the divergence on the real machine: a 0.1 degree difference (0.12 mm at 
 
 ## Base tipping
 
-From the simulated pivot forces (peak 12 N for an undamped 180 / 180 degree release) the quasi-static tipping margin about the side edges is, at 385 mm axle height and 214 mm base width, with no screws or friction counted:
+From the simulated pivot forces (peak 12 N for an undamped 180 / 180 degree release) the quasi-static tipping margin about the side edges is, at 385 mm axle height and 218 mm base width, with no screws or friction counted:
 
 | Release | Margin with 1 kg ballast | Margin with 3 kg ballast |
 |---|---|---|
-| 90 / 90 degrees | 3.6 | 6.9 |
-| 120 / 120 degrees | 0.8-0.9 | 1.5-1.7 |
-| 150 / 150 degrees | 0.6-0.8 | 1.1-1.4 |
-| 180 / 180 degrees, no damping (worst case) | 0.57 | 1.05 |
+| 90 / 90 degrees | 3.7-3.9 | 7.0-7.4 |
+| 120 / 120 degrees | 0.8-0.95 | 1.5-1.7 |
+| 150 / 150 degrees | 0.6-0.8 | 1.15-1.4 |
+| 180 / 180 degrees, no damping (worst case) | 0.58 | 1.07 |
 
-(Margin below 1 means the base would tip over in this simple model.) So: use the 3 kg steel ballast **and** screw or clamp the base down for the big releases. With only the 1 kg minimum ballast, stay at about 90 degrees or fasten the base. Full table: `python tools/check_tipping.py`.
+(Margin below 1 means the base would tip over in this simple model.) **Requirement: for releases above 90 degrees use 3 kg of ballast AND fasten the base with desk screws or a clamp.** 1 kg of ballast is only for small swings up to 90 degrees. Even 3 kg leaves a margin of only 1.07 in the worst case, so the fastening is not optional. Full table: `python tools/check_tipping.py`.
+
+Sliding: the peak horizontal pivot force is 12 N (180 / 180 degrees, undamped) against a friction capacity of 0.4 x the 4.0 kg stand weight (15.8 N, pendulum weight adds a little); the worst-case safety factor over all listed releases is 1.5 (friction coefficient 0.4 is an *assumption*; a smooth or dusty desk can be lower). Fastening the base also covers this.
 
 ## Mass report (from the CAD volumes, PLA 1.24 g/cm3, plus hardware)
 
@@ -156,12 +161,12 @@ Rebuild only the CAD: `~/tools/cad-venv/bin/python cad/build_all.py` (needs CadQ
 
 - Nothing is printed or measured yet. Run time (the 20-30 s goal), bearing fit, wobble, upright stiffness and the strength of the nut slot in the nose are all *unverified*.
 - Simulated damping is an assumption; the wild-motion duration spans 5-64 s over the plausible range (above).
-- Base tipping margin is only 1.05 in the worst case with 3 kg of ballast and an unfastened base. Fasten it down for 150-180 degree releases.
+- Base tipping margin is only 1.07 in the worst case with 3 kg of ballast and an unfastened base. Releases above 90 degrees need 3 kg ballast AND desk screws or a clamp.
 - Effective fill factors (arms 0.60, stand 0.50), the 12 g bearing mass and the 4 g/cm3 bulk density of steel washers are assumptions.
 - The cantilever/axle mount is part of `upright_top` (one print) instead of a separate part (choice).
-- The ballast pocket is open at the top; no lid is designed.
+- The ballast pocket is open at the top; a lid is not designed.
 - The LED cap wiring (LED leads, CR2032 contact, switch) is only roughed in: pocket, LED hole and a lead channel. Not tested.
-- The elbow bolt is M8 x 50 (the spec said about 45; 50 is needed for the washer and nyloc nut).
+- The elbow bolt is M8 x 60 (the spec said about 45): 60 mm puts the 22 mm thread past the lower hub so the shank runs under both elbow bearings.
 - The release ring is a 4 mm plate clamped by the axle and 4 pegs; it may flex or twist (unverified). Pins are not part of the collision sweep (they are removed before the release).
 - Prices are estimates. The GitHub repository has not been created.
 
