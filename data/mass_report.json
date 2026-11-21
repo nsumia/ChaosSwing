@@ -1,0 +1,233 @@
+{
+ "assumptions": {
+  "pla_g_cm3": 1.24,
+  "fill_arms": 0.6,
+  "fill_stand": 0.5,
+  "bearing_g": 12.0,
+  "bearing_inner_fraction": 0.3,
+  "ballast_g": 3000.0,
+  "ballast_min_g": 1000.0
+ },
+ "items": {
+  "base": {
+   "group": "stand",
+   "volume_cm3": 843.1390440273101,
+   "mass_g": 522.7462072969323
+  },
+  "upright_lower": {
+   "group": "stand",
+   "volume_cm3": 298.51747621509855,
+   "mass_g": 185.08083525336113
+  },
+  "upright_top": {
+   "group": "stand",
+   "volume_cm3": 311.05769604177914,
+   "mass_g": 192.85577154590305
+  },
+  "release_ring": {
+   "group": "stand",
+   "volume_cm3": 124.36646565591445,
+   "mass_g": 77.10720870666695
+  },
+  "main_bolt_M8x60": {
+   "group": "stand",
+   "volume_cm3": 3.7916279016159224,
+   "mass_g": 29.76427902768499
+  },
+  "main_washer": {
+   "group": "stand",
+   "volume_cm3": 0.23303077667267563,
+   "mass_g": 1.8292915968805037
+  },
+  "main_nut": {
+   "group": "stand",
+   "volume_cm3": 0.6246032700838672,
+   "mass_g": 4.903135670158357
+  },
+  "spacer_ring": {
+   "group": "stand",
+   "volume_cm3": 0.20106192982974663,
+   "mass_g": 0.24931679298888584
+  },
+  "spacer_main_mid": {
+   "group": "stand",
+   "volume_cm3": 0.5026548245743669,
+   "mass_g": 0.623291982472215
+  },
+  "spacer_main_front": {
+   "group": "stand",
+   "volume_cm3": 0.20106192982974663,
+   "mass_g": 0.24931679298888584
+  },
+  "upper_arm": {
+   "group": "upper",
+   "volume_cm3": 42.05435970849655,
+   "mass_g": 31.288443623121434
+  },
+  "brg_main_1_inner": {
+   "group": "stand",
+   "volume_cm3": 0.43982297150257105,
+   "mass_g": 3.5999999999999996
+  },
+  "brg_main_1_outer": {
+   "group": "upper",
+   "volume_cm3": 1.8155892263626132,
+   "mass_g": 8.4
+  },
+  "brg_main_2_inner": {
+   "group": "stand",
+   "volume_cm3": 0.43982297150257116,
+   "mass_g": 3.5999999999999996
+  },
+  "brg_main_2_outer": {
+   "group": "upper",
+   "volume_cm3": 1.8155892263626132,
+   "mass_g": 8.4
+  },
+  "elbow_bolt_M8x60": {
+   "group": "upper",
+   "volume_cm3": 3.791627901615921,
+   "mass_g": 29.764279027684978
+  },
+  "spacer_elbow_rear": {
+   "group": "upper",
+   "volume_cm3": 0.20106192982974674,
+   "mass_g": 0.24931679298888595
+  },
+  "spacer_elbow_mid": {
+   "group": "upper",
+   "volume_cm3": 0.5026548245743668,
+   "mass_g": 0.6232919824722148
+  },
+  "spacer_elbow_front": {
+   "group": "upper",
+   "volume_cm3": 0.2010619298297466,
+   "mass_g": 0.24931679298888582
+  },
+  "elbow_washer": {
+   "group": "upper",
+   "volume_cm3": 0.23303077667267558,
+   "mass_g": 1.8292915968805032
+  },
+  "elbow_nyloc": {
+   "group": "upper",
+   "volume_cm3": 0.7687424862570676,
+   "mass_g": 6.0
+  },
+  "brg_elb_1_inner": {
+   "group": "upper",
+   "volume_cm3": 0.4398229715025715,
+   "mass_g": 3.5999999999999996
+  },
+  "brg_elb_1_outer": {
+   "group": "lower",
+   "volume_cm3": 1.8155892263626128,
+   "mass_g": 8.4
+  },
+  "brg_elb_2_inner": {
+   "group": "upper",
+   "volume_cm3": 0.4398229715025715,
+   "mass_g": 3.5999999999999996
+  },
+  "brg_elb_2_outer": {
+   "group": "lower",
+   "volume_cm3": 1.8155892263626128,
+   "mass_g": 8.4
+  },
+  "lower_arm": {
+   "group": "lower",
+   "volume_cm3": 37.382472510373454,
+   "mass_g": 27.812559547717846
+  },
+  "tip_bolt_M8x40": {
+   "group": "lower",
+   "volume_cm3": 2.7863182524671886,
+   "mass_g": 21.872598281867425
+  },
+  "tip_nut_1": {
+   "group": "lower",
+   "volume_cm3": 0.6246032700838673,
+   "mass_g": 4.903135670158358
+  },
+  "tip_nut_2": {
+   "group": "lower",
+   "volume_cm3": 0.6246032700838673,
+   "mass_g": 4.903135670158358
+  }
+ },
+ "variants": {
+  "default (tip = bolt + 2 nuts)": {
+   "upper": {
+    "mass_g": 94.0039398161369,
+    "cm_x_mm": -6.848543558908706e-16,
+    "cm_y_mm": -101.16770869956255,
+    "d_mm": 101.16770869956255,
+    "I_pivot_g_mm2": 1438924.6265866563,
+    "I_cm_g_mm2": 476803.2062908233
+   },
+   "lower": {
+    "mass_g": 76.291429169902,
+    "cm_x_mm": -1.9350830628664887e-15,
+    "cm_y_mm": -83.28679082480798,
+    "d_mm": 83.28679082480798,
+    "I_pivot_g_mm2": 884915.441867136,
+    "I_cm_g_mm2": 355705.48422869225
+   },
+   "ratio_lower_over_upper": 0.8115769330426049
+  },
+  "solid print (fill 1.0)": {
+   "upper": {
+    "mass_g": 114.86290223155119,
+    "cm_x_mm": -7.077621018410097e-16,
+    "cm_y_mm": -95.35384236199518,
+    "d_mm": 95.35384236199518,
+    "I_pivot_g_mm2": 1613148.8053387494,
+    "I_cm_g_mm2": 568774.4928363403
+   },
+   "lower": {
+    "mass_g": 94.83313553504723,
+    "cm_x_mm": -2.0660199462074656e-15,
+    "cm_y_mm": -78.2661759967929,
+    "d_mm": 78.2661759967929,
+    "I_pivot_g_mm2": 998397.3374551698,
+    "I_cm_g_mm2": 417488.02248112694
+   },
+   "ratio_lower_over_upper": 0.825620228051298
+  },
+  "LED cap tip (cap + CR2032 + bolt + 1 nut)": {
+   "upper": {
+    "mass_g": 94.0039398161369,
+    "cm_x_mm": -6.848543558908706e-16,
+    "cm_y_mm": -101.16770869956255,
+    "d_mm": 101.16770869956255,
+    "I_pivot_g_mm2": 1438924.6265866563,
+    "I_cm_g_mm2": 476803.2062908233
+   },
+   "lower": {
+    "mass_g": 85.91294441270078,
+    "cm_x_mm": -1.5796310244761934e-15,
+    "cm_y_mm": -87.6284690328376,
+    "d_mm": 87.6284690328376,
+    "I_pivot_g_mm2": 1030192.142655271,
+    "I_cm_g_mm2": 370488.24230971246
+   },
+   "ratio_lower_over_upper": 0.9139291882950717
+  }
+ },
+ "sim_inputs": {
+  "L1_m": 0.16,
+  "m1_kg": 0.0940039398161369,
+  "d1_m": 0.10116770869956256,
+  "I1p_kgm2": 0.0014389246265866563,
+  "m2_kg": 0.076291429169902,
+  "d2_m": 0.08328679082480799,
+  "I2p_kgm2": 0.0008849154418671361,
+  "L2_m": 0.15
+ },
+ "stand": {
+  "printed_and_hw_g": 1022.6086546660373,
+  "total_with_min_ballast_g": 2022.6086546660372,
+  "total_with_design_ballast_g": 4022.608654666037
+ },
+ "ballast_pocket_cm3": 978.8521384152077
+}
