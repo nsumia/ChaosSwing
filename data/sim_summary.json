@@ -1,0 +1,38 @@
+{
+ "release_deg": [
+  150.0,
+  150.0
+ ],
+ "delta_deg": 0.1,
+ "damping_Nms_per_rad": 5e-05,
+ "T_s": 40.0,
+ "t_tip_separation_gt_10mm_s": 1.3900000000000001,
+ "t_tip_separation_gt_100mm_s": 1.8,
+ "max_tip_separation_mm": 618.4313665485076,
+ "energy_above_rest_mJ_start": 502.299978546665,
+ "t_energy_below_25pct_s": null,
+ "t_energy_below_10pct_s": null,
+ "t_last_lower_arm_flip_s_release_A": 12.76,
+ "damping_sensitivity": {
+  "2e-05": {
+   "t_last_lower_arm_flip_s": 64.29,
+   "t_E_below_25pct_s": 68.31,
+   "t_E_below_10pct_s": null
+  },
+  "5e-05": {
+   "t_last_lower_arm_flip_s": 12.76,
+   "t_E_below_25pct_s": 71.89,
+   "t_E_below_10pct_s": null
+  },
+  "0.0001": {
+   "t_last_lower_arm_flip_s": 11.9,
+   "t_E_below_25pct_s": 14.38,
+   "t_E_below_10pct_s": 21.45
+  },
+  "0.0002": {
+   "t_last_lower_arm_flip_s": 5.33,
+   "t_E_below_25pct_s": 6.73,
+   "t_E_below_10pct_s": 10.66
+  }
+ }
+}
