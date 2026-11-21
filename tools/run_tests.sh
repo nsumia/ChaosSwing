@@ -12,7 +12,7 @@ reasons=()
 run() { # label cmd...
   local label=$1; shift
   echo "--- $label"
-  "$@" 2>&1 | grep -v "^Fontconfig error\|vtkXOpenGLRenderWindow.*WARN| bad X server\|^$" | tee -a "$log"
+  "$@" 2>&1 | grep -v "^Fontconfig \(error\|warning\)\|vtkXOpenGLRenderWindow.*WARN| bad X server\|^$" | tee -a "$log"
   local rc=${PIPESTATUS[0]}
   [ "$rc" -eq 0 ] || reasons+=("$label exited $rc")
 }

@@ -32,8 +32,17 @@ def main(root=None):
     for it in A.build_items(led_cap=True, tip_nuts=1):
         col = COLORS[it.group] if it.kind == "printed" else (0.78, 0.78, 0.8) if it.kind == "steel" else (0.2, 0.2, 0.22)
         asm.add(cq.Workplane("XY").add(A.pose_world(it, *POSE)), name=it.name, color=cq.Color(*col))
-    asm.save(f"{root}/step/assembly.step")
-    _fix_stamp(f"{root}/step/assembly.step")
+    # OpenCascade orders the colour/style entities of an assembly STEP non-deterministically (pointer hash order), so the committed
+    # file is only rewritten on request: CS_REGEN_ASSEMBLY=1 python cad/build_all.py. A normal test run leaves it untouched.
+    target = f"{root}/step/assembly.step"
+    if os.environ.get("CS_REGEN_ASSEMBLY") == "1" or not os.path.exists(target):
+        asm.save(target)
+        _fix_stamp(target)
+    else:
+        import tempfile
+        with tempfile.TemporaryDirectory() as td:
+            asm.save(f"{td}/a.step")      # still build + save it, to prove the assembly exports
+        print("assembly.step kept (set CS_REGEN_ASSEMBLY=1 to rewrite)")
     print("exported assembly.step")
 
 

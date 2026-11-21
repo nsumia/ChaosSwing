@@ -24,12 +24,12 @@ Status: **v1, designed and checked on the computer only. Nothing has been printe
 ![divergence gif](img/divergence.gif)
 
 Two simulated releases, upper arm 150.0 and 150.1 degrees, lower arm in line, both from rest (rigid bodies with the inertias from the CAD, viscous joint damping of 5e-5 N m s/rad per joint as an **assumption**).
-The tips are 10 mm apart after about 1.4 s and 100 mm apart after 1.8 s. More: `img/tip_trace.png`, `data/sim_summary.json`.
+The tips are 10 mm apart after about 1.2 s and 100 mm apart after 1.9 s. More: `img/tip_trace.png`, `data/sim_summary.json`.
 
 The simulation uses **viscous** damping. Real 608 bearing friction is partly Coulomb (constant torque), which most likely shortens the motion compared with the numbers here.
 
-How long the motion stays wild depends almost entirely on the (unknown) friction. In the simulation the last flip of the lower arm happens after 12.8 s with 5e-5, after 64 s with 2e-5, after 11.9 s with 1e-4 and after 5.3 s with 2e-4 N m s/rad.
-These are single trajectories of a chaotic system, so they are indicative only. **The 20-30 s goal is not confirmed; real run time is not measured (unverified).** Plainly: reaching 20-30 s of wild motion needs a joint damping of about 2-3e-5 N m s/rad or lower, which means low-friction bearings (degreased and lightly oiled, or ceramic). Standard greased 608 bearings are likely to give less. More tip mass also helps (lower/upper mass ratio up to about 0.95). Print the bearing test coupon and the arms first and time a run.
+How long the motion stays wild depends almost entirely on the (unknown) friction. In the simulation the last flip of the lower arm happens after 26.4 s with 5e-5, after 38.3 s with 2e-5, after 10.6 s with 1e-4 and after 6.0 s with 2e-4 N m s/rad.
+These are single trajectories of a chaotic system, so they are indicative only. **The 20-30 s goal is not confirmed; real run time is not measured (unverified).** Plainly: reaching 20-30 s of wild motion needs a joint damping of about 2-3e-5 N m s/rad or lower, which means low-friction bearings (degreased and lightly oiled, or ceramic). Standard greased 608 bearings are likely to give less. More tip mass also helps (lower/upper mass ratio up to about 0.95; the default is 0.81). Print the bearing test coupon and the arms first and time a run.
 
 ## Parts
 
@@ -111,12 +111,12 @@ From the simulated pivot forces (peak 12 N for an undamped 180 / 180 degree rele
 
 | Release | Margin with 1 kg ballast | Margin with 3 kg ballast |
 |---|---|---|
-| 90 / 90 degrees | 3.7-3.9 | 7.0-7.4 |
-| 120 / 120 degrees | 0.8-0.95 | 1.5-1.7 |
-| 150 / 150 degrees | 0.6-0.8 | 1.15-1.4 |
-| 180 / 180 degrees, no damping (worst case) | 0.58 | 1.07 |
+| 90 / 90 degrees | 3.6-3.8 | 6.9-7.3 |
+| 120 / 120 degrees | 0.83-0.99 | 1.5-1.7 |
+| 150 / 150 degrees | 0.64-0.81 | 1.16-1.4 |
+| 180 / 180 degrees, no damping (worst case) | 0.58 | 1.05 |
 
-(Margin below 1 means the base would tip over in this simple model.) **Requirement: for releases above 90 degrees use 3 kg of ballast AND fasten the base with desk screws or a clamp.** 1 kg of ballast is only for small swings up to 90 degrees. Even 3 kg leaves a margin of only 1.07 in the worst case, so the fastening is not optional. Full table: `python tools/check_tipping.py`.
+(Margin below 1 means the base would tip over in this simple model.) **Requirement: for releases above 90 degrees use 3 kg of ballast AND fasten the base with desk screws or a clamp.** 1 kg of ballast is only for small swings up to 90 degrees. Even 3 kg leaves a margin of only 1.05 in the worst case, so the fastening is not optional. Full table: `python tools/check_tipping.py`.
 
 Sliding: the peak horizontal pivot force is 12 N (180 / 180 degrees, undamped) against a friction capacity of 0.4 x the 4.0 kg stand weight (15.8 N, pendulum weight adds a little); the worst-case safety factor over all listed releases is 1.5 (friction coefficient 0.4 is an *assumption*; a smooth or dusty desk can be lower). Fastening the base also covers this.
 
@@ -126,12 +126,12 @@ Printed parts are weighted by an assumed effective fill: arms 0.60, stand 0.50 *
 
 | | Upper arm group | Lower arm group |
 |---|---|---|
-| Mass | 90.1 g | 76.3 g |
-| CoM from its pivot | 98.6 mm | 83.3 mm |
-| Inertia about its pivot | 1.34e-3 kg m2 | 8.85e-4 kg m2 |
-| Inertia about its CoM | 4.63e-4 kg m2 | 3.56e-4 kg m2 |
+| Mass | 94.0 g | 76.3 g |
+| CoM from its pivot | 101.2 mm | 83.3 mm |
+| Inertia about its pivot | 1.44e-3 kg m2 | 8.85e-4 kg m2 |
+| Inertia about its CoM | 4.77e-4 kg m2 | 3.56e-4 kg m2 |
 
-Mass ratio lower / upper = 0.85 (solid print 0.86; LED cap tip 0.95); target 0.7-1.0.
+Mass ratio lower / upper = 0.81 (solid print 0.83; LED cap tip 0.91); target 0.7-1.0.
 The upper group includes the elbow bolt, spacers, washer, nyloc nut, outer races of the main bearings and the inner races of the elbow bearings. The lower group includes the outer races of the elbow bearings and the tip bolt and nuts. A 608 is taken as 12 g (30 % inner race), *estimate*.
 
 ## Filming and photographing the chaos (untested suggestions)
@@ -155,13 +155,13 @@ The upper group includes the elbow bolt, spacers, washer, nyloc nut, outer races
 | `sim/test_sim.py` | energy drift < 1 % over 10 s without damping, monotonic decay with damping, linear mode frequencies, divergence, static force |
 | `sim/run_sim.py` | writes the divergence plot, tip trace and GIF |
 
-Rebuild only the CAD: `~/tools/cad-venv/bin/python cad/build_all.py` (needs CadQuery 2.x, VTK, trimesh, scipy, matplotlib, Pillow). Key dimensions (arm lengths, bearing seat, tip mass, ballast, pivot height) are at the top of `cad/params.py`.
+Rebuild only the CAD: `~/tools/cad-venv/bin/python cad/build_all.py` (add `CS_REGEN_ASSEMBLY=1` to also rewrite `step/assembly.step`, which is otherwise left untouched because its entity order is not deterministic) (needs CadQuery 2.x, VTK, trimesh, scipy, matplotlib, Pillow). Key dimensions (arm lengths, bearing seat, tip mass, ballast, pivot height) are at the top of `cad/params.py`.
 
 ## Open items
 
 - Nothing is printed or measured yet. Run time (the 20-30 s goal), bearing fit, wobble, upright stiffness and the strength of the nut slot in the nose are all *unverified*.
-- Simulated damping is an assumption; the wild-motion duration spans 5-64 s over the plausible range (above).
-- Base tipping margin is only 1.07 in the worst case with 3 kg of ballast and an unfastened base. Releases above 90 degrees need 3 kg ballast AND desk screws or a clamp.
+- Simulated damping is an assumption; the wild-motion duration spans 6-38 s over the plausible range (above).
+- Base tipping margin is only 1.05 in the worst case with 3 kg of ballast and an unfastened base. Releases above 90 degrees need 3 kg ballast AND desk screws or a clamp.
 - Effective fill factors (arms 0.60, stand 0.50), the 12 g bearing mass and the 4 g/cm3 bulk density of steel washers are assumptions.
 - The cantilever/axle mount is part of `upright_top` (one print) instead of a separate part (choice).
 - The ballast pocket is open at the top; a lid is not designed.
